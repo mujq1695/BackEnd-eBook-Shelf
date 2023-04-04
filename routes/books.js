@@ -6,7 +6,7 @@ const {
   editBook,
   deleteBook,
   addBook,
-} = require("../controllers/controller.js");
+} = require("../controllers/bookController.js");
 
 router.get("/", (req, res) => {
   res.send("Routes Connected Successfully...");

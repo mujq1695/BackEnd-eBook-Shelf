@@ -19,6 +19,7 @@ app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use('/',require(path.join(__dirname,"./routes/books.js")))
+app.use('/',require(path.join(__dirname,"./routes/users.js")))
 
 
 
