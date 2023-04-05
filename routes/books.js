@@ -6,11 +6,18 @@ const {
   editBook,
   deleteBook,
   addBook,
+  getPublic,
+  getPrivate,
+
 } = require("../controllers/bookController.js");
 
 router.get("/", (req, res) => {
   res.send("Routes Connected Successfully...");
 });
+
+router.get('/publicBooks',getPublic);
+
+router.get('/privateBooks', getPrivate);
 
 router.get("/myBooks", getBooks);
 

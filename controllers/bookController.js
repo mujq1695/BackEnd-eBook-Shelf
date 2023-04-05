@@ -1,13 +1,22 @@
 const asyncHandler = require('express-async-handler')
 
-const User = require('../models/usersModel')
+const Book = require('../models/usersModel')
 
+const getPublic = asyncHandler(async (req,res)=>{
 
+    const books = await Book.find({access:"public"})
+res.send()
+
+})
+
+const getPrivate = asyncHandler(async (req,res)=>{
+const books = await Book.find({access:"private"})
+})
 // @description  - Get my Book
 // @ routes      - GET /myBooks
 // @access       - Private
 const getBooks = asyncHandler(async(req,res)=>{
-    const books = User.find()
+    const books = Book.find()
     res.send("Books Retrieved Successfully...");
 })
 
@@ -37,5 +46,7 @@ module.exports = {
     getBooks,
     editBook,
     deleteBook,
-    addBook
+    addBook,
+    getPublic,
+    getPrivate
 }
