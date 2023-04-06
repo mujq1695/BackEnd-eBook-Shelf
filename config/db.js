@@ -8,7 +8,7 @@ const conn = await mongoose.connect(url);
         console.log(`MongoDB Connection Successfull - ${conn.connection.host}`.cyan.underline)
     } catch(error){
         console.log(error);
-        process.exit(1);
+        process.exit
         
     }
 }
