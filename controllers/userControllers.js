@@ -7,8 +7,9 @@ const User = require("../models/usersModel");
 // Fetch User
 
 const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find();
+  const users = await User.findById(req.user.id);
   res.status(200).json(users);
+  
 });
 
 // Register User

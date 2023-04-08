@@ -3,6 +3,7 @@ const app = express();
 const path=require('path');
 const colors = require('colors')
 const dotenv = require('dotenv').config()
+const bookRoutes = require('./routes/books')
 const port = process.env.PORT || 7000;
 const connectDB=require('./config/db');
 
@@ -18,8 +19,8 @@ const logger = (req, res, next) => {
 app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/',require(path.join(__dirname,"./routes/books.js")))
-app.use('/',require(path.join(__dirname,"./routes/users.js")))
+app.use(bookRoutes)
+app.use(require(path.join(__dirname,"./routes/users.js")))
 
 
 

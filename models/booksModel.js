@@ -1,11 +1,7 @@
 const mongoose = require("mongoose");
 
 const bookSchema = mongoose.Schema({
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        required:true,
-        ref: 'User'
-    },
+    
 //   image_src: {
 //     type: String,
 //     required: [true, "Please enter image URL"],
@@ -25,6 +21,14 @@ const bookSchema = mongoose.Schema({
     type: String,
     required: [true, "Please enter the book category"],
   },
+  ISBN:{
+    type:String,
+    required:[true, "Please Enter ISBN Number"]
+  },
+  Rating:{
+    type:String,
+    
+  },
   access: {
     type: String,
     required: [true, "Please enter the access type"],
@@ -34,10 +38,13 @@ const bookSchema = mongoose.Schema({
     type: String,
     required: [true, "Please enter the book description"],
   },
+  user:{
+    type: mongoose.Schema.Types.ObjectId,
+    // required:true,
+    ref: 'User'
+  }
 },
-{
-    timestamps: true,
-}
+
 );
 
 module.exports = mongoose.model("Book",bookSchema)

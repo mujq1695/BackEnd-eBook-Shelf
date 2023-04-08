@@ -10,21 +10,22 @@ const {
   getPrivate,
 
 } = require("../controllers/bookController.js");
+const {protect} = require('../middleware/authMiddleware.js')
 
 router.get("/", (req, res) => {
   res.send("Routes Connected Successfully...");
 });
 
-router.get('/publicBooks',getPublic);
+router.get('/publicBooks',protect ,getPublic);
 
-router.get('/privateBooks', getPrivate);
+router.get('/privateBooks',protect , getPrivate);
 
-router.get("/myBooks", getBooks);
+router.get("/myBooks",protect, getBooks);
 
-router.post("/addBook", addBook);
+router.post("/addBook", protect, addBook);
 
-router.put("/editBook/:bookId", editBook);
+router.put("/editBook/:bookId", protect, editBook);
 
-router.delete("/delBook/:bookId", deleteBook);
+router.delete("/delBook/:bookId", protect, deleteBook);
 
 module.exports = router;
