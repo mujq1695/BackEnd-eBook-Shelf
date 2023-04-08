@@ -12,7 +12,7 @@ const bookSchema = mongoose.Schema({
     required: [true, "Please enter the book title"],
   },
 
-  aurthor: {
+  author: {
     type: String,
     required: [true, "Please enter the Aurthor Name"],
   },
