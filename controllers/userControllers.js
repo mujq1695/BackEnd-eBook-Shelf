@@ -60,10 +60,12 @@ const signUpUser = asyncHandler(async (req, res) => {
 const LogInUser = asyncHandler(async (req, res) => {
     const {email,password}= req.body;
     if(!email || !password){
-        res.status(400).json({message:"Please enter email and password"});
+        res.status(401).json({message:"Please enter email and password"});
     }
+    
     // check for user exist in DB using email
     const user = await User.findOne({Email:email})
+    
 
     // check if user exist then entered password is correct
     if(user && (await bcrypt.compare(password,user.Password))){
@@ -79,7 +81,7 @@ const LogInUser = asyncHandler(async (req, res) => {
         res.status(400).json({message:"Invalid Credentials"})
     }
 
-  res.send("retrieved Data Successfully...");
+//   res.send("retrieved Data Successfully...");
 });
 
 // Update User Data
